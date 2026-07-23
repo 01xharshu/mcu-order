@@ -1,0 +1,51 @@
+:root {
+  /* KPRVerse Palette */
+  --paper: #F2F0EA;
+  --paper-warm: #E7E2D8;
+  --ink: #0A0B0D;
+  --ink-soft: #26282C;
+  --meta: #77756F;
+  --line: rgba(10, 11, 13, 0.18);
+  --signal-red: #B51F28;
+  --legacy-gold: #B59A52;
+
+  /* Typography Scale */
+  --font-display: "Roboto Flex", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Inter", Helvetica, Arial, sans-serif;
+  --font-editorial: "Source Serif 4", Georgia, serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+
+  --hero: clamp(82px, 9.4vw, 148px);
+  --tableau: clamp(58px, 6.4vw, 104px);
+  --page-title: clamp(72px, 10vw, 156px);
+  --index-title: clamp(38px, 4vw, 64px);
+  --body-large: clamp(20px, 1.6vw, 28px);
+  --body: clamp(16px, 1.08vw, 19px);
+  --meta-size: 11px;
+  --nav: 13px;
+
+  /* Layout */
+  --page-gutter: 32px;
+  --header-height: 80px;
+
+  /* Z-Index Strata */
+  --z-world: 0;
+  --z-connection-layer: 10;
+  --z-ui: 20;
+  --z-header: 50;
+}
+
+html {
+  color-scheme: light;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font-display);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
