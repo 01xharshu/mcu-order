@@ -13,7 +13,7 @@ interface GovernorState {
 
 // Track a small rolling window of frametimes to determine if we should downgrade
 const FRAME_SAMPLES = 60;
-let frameTimes: number[] = [];
+const frameTimes = new Float32Array(FRAME_SAMPLES);
 let sampleCount = 0;
 
 export const useGovernor = create<GovernorState>((set, get) => ({

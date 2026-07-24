@@ -1,0 +1,145 @@
+/* ═══════════════════════════════════════════════════════════════
+   THE MCU CONTINUUM — Typography System
+   Master Prompt §7 (lines 964–1034)
+   Fonts: Roboto Flex (display), Geist Sans (UI/body), Geist Mono (numerals)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Display Typography ── */
+.display-hero {
+  font-family: var(--font-display);
+  font-size: var(--display-hero);
+  font-weight: 600;
+  font-stretch: 78%;
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  font-optical-sizing: auto;
+}
+
+.display-scene {
+  font-family: var(--font-display);
+  font-size: var(--display-scene);
+  font-weight: 560;
+  font-stretch: 82%;
+  line-height: 0.90;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-optical-sizing: auto;
+}
+
+.display-route {
+  font-family: var(--font-display);
+  font-size: var(--display-route);
+  font-weight: 540;
+  font-stretch: 88%;
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  font-optical-sizing: auto;
+}
+
+/* ── Title Typography ── */
+.title-xl {
+  font-family: var(--font-display);
+  font-size: var(--title-xl);
+  font-weight: 520;
+  font-stretch: 92%;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+
+.title-lg {
+  font-family: var(--font-display);
+  font-size: var(--title-lg);
+  font-weight: 500;
+  font-stretch: 96%;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+/* ── Body Typography ── */
+.body-lg {
+  font-family: var(--font-ui);
+  font-size: var(--body-lg);
+  font-weight: 400;
+  line-height: 1.56;
+  letter-spacing: 0;
+  max-width: 64ch;
+}
+
+.body-standard {
+  font-family: var(--font-ui);
+  font-size: var(--body);
+  font-weight: 400;
+  line-height: 1.52;
+  letter-spacing: 0;
+  max-width: 60ch;
+}
+
+/* ── Meta / Caption Typography ── */
+.meta {
+  font-family: var(--font-ui);
+  font-size: var(--meta);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Mono (restricted to time, duration, source IDs, chronology, exact values) ── */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--meta);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Navigation Typography (§10, lines 1170–1171) ── */
+.nav-label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.nav-brand {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 560;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ── Scene Statement ── */
+.scene-statement {
+  font-family: var(--font-ui);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.58;
+  max-width: 42ch;
+  color: var(--optical-white-muted);
+}
+
+/* ── Source / Evidence ── */
+.source-label {
+  font-family: var(--font-ui);
+  font-size: var(--meta);
+  font-weight: 450;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+/* ── Scroll Cue ── */
+.scroll-cue {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--graphite-500);
+}

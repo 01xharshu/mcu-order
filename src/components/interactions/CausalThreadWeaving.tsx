@@ -71,11 +71,11 @@ export function CausalThreadWeaving() {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[500px] border border-white/10 rounded-[var(--radius-medium)] bg-void overflow-hidden select-none"
+      className="relative w-full h-[500px] border border-[var(--color-carbon-200)] bg-[var(--color-void-000)] overflow-hidden select-none font-sans"
     >
-      <div className="absolute top-4 left-4 text-xs tracking-widest text-mind uppercase font-bold z-30">
-        Prototype: Causal Thread Weaving
-        <p className="text-muted/50 font-normal mt-1 normal-case tracking-normal">Drag from one character to a related character to discover their connection.</p>
+      <div className="absolute top-4 left-4 metadata-text z-30">
+        PROTOTYPE: CAUSAL THREAD WEAVING
+        <p className="text-[var(--color-mist-700)] font-normal mt-1 normal-case tracking-normal font-sans">Drag from one character to a related character to discover their connection.</p>
       </div>
 
       {/* SVG Canvas for threads */}
@@ -87,7 +87,7 @@ export function CausalThreadWeaving() {
             y1={NODES.find(n => n.id === dragSource)!.y}
             x2={pointer.x}
             y2={pointer.y}
-            stroke="#eab308"
+            stroke="var(--color-continuity-edge)"
             strokeWidth="2"
             strokeDasharray="4 4"
             className="animate-pulse"
@@ -101,8 +101,9 @@ export function CausalThreadWeaving() {
             y1={NODES.find(n => n.id === connectedPair[0])!.y}
             x2={NODES.find(n => n.id === connectedPair[1])!.x}
             y2={NODES.find(n => n.id === connectedPair[1])!.y}
-            stroke="#22c55e"
-            strokeWidth="3"
+            stroke="var(--color-continuity-core)"
+            strokeWidth="4"
+            style={{ filter: "drop-shadow(0 0 8px var(--color-continuity-edge))" }}
           />
         )}
       </svg>
@@ -116,29 +117,44 @@ export function CausalThreadWeaving() {
             setConnectedPair(null);
           }}
           className={clsx(
-            "absolute -translate-x-1/2 -translate-y-1/2 rounded-full flex flex-col items-center justify-center border-2 px-4 py-2 cursor-pointer transition-colors duration-200 z-20",
-            dragSource === node.id ? "bg-mind/20 border-mind text-bone shadow-[0_0_15px_rgba(234,179,8,0.5)]" : "bg-elevated border-white/10 text-muted hover:border-white/30 hover:text-bone"
+            "absolute -translate-x-1/2 -translate-y-1/2 rounded-full flex flex-col items-center justify-center border-2 px-4 py-2 cursor-pointer transition-colors duration-200 z-20 font-mono",
+            dragSource === node.id ? "bg-[var(--color-carbon-200)] border-[var(--color-continuity-edge)] text-[var(--color-white-1000)] shadow-[0_0_15px_var(--color-continuity-edge)]" : "bg-[var(--color-void-000)] border-[var(--color-graphite-300)] text-[var(--color-mist-700)] hover:border-[var(--color-continuity-core)] hover:text-[var(--color-white-1000)]"
           )}
           style={{ left: node.x, top: node.y }}
         >
           <span className="font-bold text-xs whitespace-nowrap">{node.name}</span>
           {dragSource === node.id && (
-            <span className="text-[10px] text-mind uppercase mt-1">Weaving...</span>
+            <span className="text-[10px] text-[var(--color-continuity-edge)] mt-1">WEAVING...</span>
           )}
         </div>
       ))}
 
       {/* Result Panel */}
       {connectedPair && (
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-elevated/90 border border-success/30 px-6 py-4 rounded-[var(--radius-small)] backdrop-blur text-center z-30 animate-in fade-in slide-in-from-bottom-4">
-          <p className="text-xs text-success uppercase tracking-widest font-bold mb-2">Connection Formed</p>
-          <p className="text-sm font-bold text-bone">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-[var(--color-carbon-200)] border border-[var(--color-continuity-edge)] px-6 py-4 backdrop-blur text-center z-30">
+          <p className="metadata-text text-[var(--color-continuity-core)] mb-2">CONNECTION FORMED</p>
+          <p className="text-sm font-bold text-[var(--color-white-1000)]">
             {NODES.find(n => n.id === connectedPair[0])?.name} & {NODES.find(n => n.id === connectedPair[1])?.name}
           </p>
-          <p className="text-xs text-muted mt-1">First met in Captain America: Civil War (2016)</p>
+          <p className="text-xs text-[var(--color-mist-700)] mt-1">
+            {
+              (() => {
+                const RELATIONSHIPS: Record<string, string> = {
+                  "stark-rogers": "First met in The Avengers (2012)",
+                  "rogers-stark": "First met in The Avengers (2012)",
+                  "stark-rhodes": "Long-time allies since Iron Man (2008)",
+                  "rhodes-stark": "Long-time allies since Iron Man (2008)",
+                  "stark-parker": "Mentorship established in Captain America: Civil War (2016)",
+                  "parker-stark": "Mentorship established in Captain America: Civil War (2016)",
+                };
+                const pairKey = `${connectedPair[0]}-${connectedPair[1]}`;
+                return RELATIONSHIPS[pairKey] || "Known connection in the MCU";
+              })()
+            }
+          </p>
           <button 
             onClick={() => setConnectedPair(null)}
-            className="mt-3 text-[10px] uppercase text-muted hover:text-bone underline"
+            className="mt-3 text-[10px] uppercase text-[var(--color-mist-700)] hover:text-[var(--color-white-1000)] underline"
           >
             Clear Thread
           </button>

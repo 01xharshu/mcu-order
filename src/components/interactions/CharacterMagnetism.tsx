@@ -48,14 +48,14 @@ export function CharacterMagnetism() {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[500px] border border-white/10 rounded-[var(--radius-medium)] bg-void overflow-hidden"
+      className="relative w-full h-[500px] border border-[var(--color-carbon-200)] bg-[var(--color-void-000)] overflow-hidden font-sans"
     >
-      <div className="absolute top-4 left-4 text-xs tracking-widest text-reality uppercase font-bold">
-        Prototype: Character Magnetism
+      <div className="absolute top-4 left-4 metadata-text">
+        PROTOTYPE: CHARACTER MAGNETISM
       </div>
       
       {/* Edges */}
-      <svg className="absolute inset-0 pointer-events-none w-full h-full opacity-30">
+      <svg className="absolute inset-0 pointer-events-none w-full h-full opacity-50">
         {hoveredId && NODES.map(node => {
           if (node.id !== hoveredId) return null;
           return node.relatedIds.map(relId => {
@@ -70,7 +70,7 @@ export function CharacterMagnetism() {
                 y1={node.y + sourceOffset.y} 
                 x2={target.x + targetOffset.x} 
                 y2={target.y + targetOffset.y} 
-                stroke="#ef4444" 
+                stroke="var(--color-continuity-edge)" 
                 strokeWidth="2"
                 strokeDasharray="4 4"
                 className="transition-all duration-500 ease-out"
@@ -95,9 +95,9 @@ export function CharacterMagnetism() {
             onFocus={() => setHoveredId(node.id)}
             onBlur={() => setHoveredId(null)}
             className={clsx(
-              "absolute -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-bold text-xs whitespace-nowrap transition-all duration-500 ease-out",
-              isHovered ? "bg-reality text-void z-20 scale-110 px-4 py-2" : "bg-elevated text-muted border border-white/10 px-3 py-1 z-10 hover:border-reality",
-              isRelated && "border-reality/50 text-bone",
+              "absolute -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-bold text-xs whitespace-nowrap transition-all duration-500 ease-out font-mono",
+              isHovered ? "bg-[var(--color-continuity-edge)] text-[var(--color-white-1000)] z-20 scale-110 px-4 py-2" : "bg-[var(--color-carbon-200)] text-[var(--color-mist-700)] border border-[var(--color-graphite-300)] px-3 py-1 z-10 hover:border-[var(--color-continuity-edge)]",
+              isRelated && "border-[var(--color-continuity-edge)] text-[var(--color-white-1000)]",
               isUnrelated && "opacity-20 blur-[1px]"
             )}
             style={{

@@ -1,0 +1,58 @@
+/* ═══════════════════════════════════════════════════════════════
+   THE MCU CONTINUUM — Controls CSS
+   Master Prompt §10
+   ═══════════════════════════════════════════════════════════════ */
+
+.controlGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--graphite-500);
+}
+
+.toggle {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 560;
+  letter-spacing: 0.08em;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 2px;
+  transition: all var(--duration-micro) var(--ease-soft);
+  text-transform: uppercase;
+}
+
+/* Spoiler States */
+.toggle.safe {
+  background: var(--graphite-200);
+  color: var(--verified);
+}
+
+.toggle.watched {
+  background: var(--graphite-200);
+  color: var(--uncertainty);
+}
+
+.toggle.full {
+  background: var(--causal-red-dim);
+  color: var(--causal-red);
+}
+
+/* Sound States */
+.toggle.off {
+  background: transparent;
+  color: var(--optical-white-muted);
+  border: 1px solid var(--graphite-300);
+}
+
+.toggle.on {
+  background: var(--graphite-300);
+  color: var(--optical-white);
+  border: 1px solid transparent;
+}

@@ -10,7 +10,9 @@ export function WatchProgressSummary() {
   const watchedIds = useWatchStore((state) => state.watchedFilmIds);
 
   useEffect(() => {
-    setMounted(true);
+    // avoid synchronous setState in effect
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!mounted) return null;

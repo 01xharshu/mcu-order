@@ -1,0 +1,11 @@
+{
+  "version": "9.0",
+  "direction": "Cinematic Continuity Interface",
+  "archetypeAnchor": "A brilliant billionaire inventor in red mechanical armor",
+  "rules": {
+    "lighting": "Physically plausible key light, deep atmosphere",
+    "color": "Large format cinema color, neutral UI overlay",
+    "anatomy": "Realistic adult anatomy, physically grounded"
+  },
+  "approvedAssets": []
+}

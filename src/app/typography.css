@@ -1,0 +1,103 @@
+/* ═══════════════════════════════════════════════════════════════
+   TYPOGRAPHY
+   Master Prompt §7
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-display: "Roboto Flex", "Arial Narrow", sans-serif;
+  --font-ui: "Geist Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  /* Exact clamp formulas from §7 */
+  --display-hero: clamp(4rem, 8.9vw, 9.25rem);
+  --display-scene: clamp(3.1rem, 6.2vw, 6.5rem);
+  --display-route: clamp(2.75rem, 5.2vw, 5.5rem);
+  --title-xl: clamp(2rem, 3.2vw, 3.5rem);
+  --title-lg: clamp(1.5rem, 2.1vw, 2.25rem);
+  --body-lg: clamp(1.0625rem, 1.3vw, 1.25rem);
+  --body: 1rem;
+  --meta: 0.75rem;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--body);
+  line-height: 1.48; /* Body line-height: 1.48–1.62 */
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--background);
+}
+
+/* Typography styles */
+.display-hero {
+  font-family: var(--font-display);
+  font-size: var(--display-hero);
+  font-weight: 560; /* 520-680 range */
+  line-height: 0.88; /* 0.84-0.91 */
+  letter-spacing: -0.04em; /* -0.045em to -0.02em */
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 75; /* 68-90 */
+}
+
+.display-scene {
+  font-family: var(--font-display);
+  font-size: var(--display-scene);
+  font-weight: 560;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 80;
+}
+
+.display-route {
+  font-family: var(--font-display);
+  font-size: var(--display-route);
+  font-weight: 560;
+  line-height: 0.94; /* 0.9-0.98 */
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 95; /* 88-102 */
+}
+
+h1 { @extend .display-route; }
+h2 { font-size: var(--title-xl); font-family: var(--font-display); font-weight: 560; letter-spacing: -0.02em; text-transform: uppercase; }
+h3 { font-size: var(--title-lg); font-family: var(--font-display); font-weight: 560; letter-spacing: -0.02em; text-transform: uppercase; }
+
+.body-lg {
+  font-size: var(--body-lg);
+  line-height: 1.55;
+  max-width: 60ch; /* 48-72ch */
+}
+
+.scene-statement {
+  font-size: var(--body-lg);
+  line-height: 1.55;
+  max-width: 60ch;
+  color: var(--text-secondary);
+}
+
+.meta {
+  font-size: var(--meta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-meta);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
+
+/* Base text utilities */
+.uppercase { text-transform: uppercase; }
+.tracking-wide { letter-spacing: 0.05em; }
+.tracking-widest { letter-spacing: 0.1em; }
+.tracking-tight { letter-spacing: -0.02em; }
+
+/* Colors */
+.ink-muted { color: var(--text-meta); }
+.ink-secondary { color: var(--text-secondary); }
+.text-ink-on-light { color: var(--ink-on-light); }
+.text-ink-muted-on-light { color: var(--ink-muted-on-light); }
+.text-graphite-500 { color: var(--graphite-500); }

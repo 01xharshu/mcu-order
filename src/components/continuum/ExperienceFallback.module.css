@@ -1,0 +1,193 @@
+/* ═══════════════════════════════════════════════════════════════
+   THE MCU CONTINUUM — Experience Fallback CSS
+   Master Prompt §13, §14
+   ═══════════════════════════════════════════════════════════════ */
+
+.fallbackContainer {
+  width: 100%;
+}
+
+/* ── Scene 00: Prelude Opening Composition (§13) ── */
+.preludeSection {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 900px;
+  overflow: hidden;
+  background: var(--graphite-000);
+}
+
+.preludeHeadlineBlock {
+  position: absolute;
+  top: 176px;
+  left: 48px;
+  width: 600px;
+}
+
+.preludeHeadline {
+  font-family: var(--font-display);
+  font-size: 112px; /* Explicit per prompt */
+  font-weight: 560;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--optical-white);
+  font-variation-settings: "wdth" 75;
+}
+
+.preludeSeam {
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  left: 69%;
+  width: 2px;
+  background: var(--optical-white);
+  z-index: 2;
+}
+
+.preludeSlice {
+  position: absolute;
+  top: 16%;
+  bottom: 12%;
+  left: 62%;
+  right: 12%;
+  background: rgba(255,255,255,0.05); /* rights-safe silhouette placeholder */
+  z-index: 1;
+}
+
+.preludeStatement {
+  position: absolute;
+  top: 640px;
+  left: 52px;
+  width: 390px;
+  font-family: var(--font-ui);
+  font-size: 18px; /* Explicit per prompt */
+  line-height: 1.55;
+  color: var(--optical-white-muted);
+}
+
+.preludeScrollCue {
+  position: absolute;
+  top: 826px;
+  left: 48px;
+  font-family: var(--font-ui);
+  font-size: var(--meta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--graphite-500);
+}
+
+/* Graceful degradation for smaller screens */
+@media (max-width: 1179px) {
+  .preludeHeadlineBlock { width: 80%; }
+  .preludeHeadline { font-size: 80px; }
+  .preludeStatement { top: 600px; }
+}
+
+@media (max-width: 767px) {
+  .preludeHeadlineBlock {
+    top: 478px;
+    left: var(--page-gutter-mobile);
+    width: 350px;
+  }
+  .preludeHeadline {
+    font-size: clamp(54px, 12vw, 62px);
+  }
+  .preludeSeam {
+    left: 71%;
+  }
+  .preludeSlice {
+    left: 60%;
+    right: -10%;
+  }
+  .preludeStatement {
+    top: 676px;
+    left: var(--page-gutter-mobile);
+    width: 320px;
+    font-size: 16px;
+  }
+  .preludeScrollCue {
+    top: 790px;
+    left: var(--page-gutter-mobile);
+  }
+}
+
+
+/* ── Semantic Fallback Sections (Scenes 01–08) ── */
+.sceneSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--seam-light);
+}
+
+.sceneHeader {
+  margin-bottom: var(--space-6);
+  max-width: 800px;
+}
+
+.sceneBody {
+  margin-bottom: var(--space-8);
+}
+
+.imageFallback {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--graphite-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: var(--space-8);
+  border: 1px solid var(--graphite-300);
+}
+
+.placeholderImage {
+  color: var(--graphite-500);
+  text-transform: uppercase;
+}
+
+/* ── Choose Section (Warm Optical White per §14) ── */
+.chooseSection {
+  min-height: 100vh;
+  background: var(--optical-white);
+  color: var(--ink-on-light);
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--seam-dark);
+}
+
+.routeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.routeCard {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-7);
+  background: var(--paper-light);
+  border: 1px solid var(--seam-light);
+  transition: background var(--trans-acknowledge);
+  text-decoration: none;
+  color: var(--ink-on-light);
+}
+
+.routeCard:hover {
+  background: var(--optical-white);
+}
+
+.routeCard h3 {
+  margin-bottom: var(--space-2);
+}
+
+.routeCard p {
+  color: var(--ink-muted-on-light);
+}
+
+@media (max-width: 767px) {
+  .routeGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,85 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS
+   Master Prompt §6, §8
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Color Palette (§6) ── */
+  --graphite-000: #050506;
+  --graphite-100: #09090b;
+  --graphite-200: #101114;
+  --graphite-300: #1b1c20;
+  --graphite-500: #686a70;
+  --optical-white: #f3f2ee;
+  --optical-white-muted: #b9b8b3;
+  --paper-light: #e9e8e3;
+  --ink-on-light: #0b0b0d;
+  --ink-muted-on-light: #535359;
+  --causal-red: #f04455;
+  --causal-red-dim: rgba(240, 68, 85, 0.22);
+  --uncertainty: #d8a84e;
+  --verified: #76b99a;
+  --seam-dark: rgba(243, 242, 238, 0.22);
+  --seam-light: rgba(11, 11, 13, 0.18);
+
+  /* Semantic UI defaults mapping */
+  --background: var(--graphite-100);
+  --text-primary: var(--optical-white);
+  --text-secondary: var(--optical-white-muted);
+  --text-meta: var(--graphite-500);
+
+  /* ── Spacing Scale (§8) ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 144px;
+  --space-11: 192px;
+
+  /* ── Layout & Grid (§8) ── */
+  --page-gutter: 48px;
+  --page-gutter-wide: 64px;
+  --page-gutter-tablet: 32px;
+  --page-gutter-mobile: 20px;
+  
+  --max-content-width: 1680px;
+  --header-safe-height: 80px;
+  --bottom-safe-area: 74px;
+
+  /* ── Z-Index Hierarchy ── */
+  --z-world: 0;
+  --z-scene-copy: 10;
+  --z-interface: 50;
+  --z-index-layer: 100;
+  --z-terminal: 150;
+
+  /* ── Transitions (§5F) ── */
+  --trans-acknowledge: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-register: 330ms cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-reveal: 700ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (min-width: 1680px) {
+  :root {
+    --page-gutter: var(--page-gutter-wide);
+  }
+}
+
+@media (max-width: 1179px) {
+  :root {
+    --page-gutter: var(--page-gutter-tablet);
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --page-gutter: var(--page-gutter-mobile);
+    --header-safe-height: calc(64px + env(safe-area-inset-top));
+    --bottom-safe-area: calc(20px + env(safe-area-inset-bottom));
+  }
+}

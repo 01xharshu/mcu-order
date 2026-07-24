@@ -1,51 +1,109 @@
+/* ═══════════════════════════════════════════════════════════════
+   THE MCU CONTINUUM — Design Tokens
+   Master Prompt §6 (Color), §7 (Typography), §8 (Layout/Grid/Spacing)
+   ═══════════════════════════════════════════════════════════════ */
+
 :root {
-  /* KPRVerse Palette */
-  --paper: #F2F0EA;
-  --paper-warm: #E7E2D8;
-  --ink: #0A0B0D;
-  --ink-soft: #26282C;
-  --meta: #77756F;
-  --line: rgba(10, 11, 13, 0.18);
-  --signal-red: #B51F28;
-  --legacy-gold: #B59A52;
+  /* ── Core Palette (§6, lines 910–928) ── */
+  --graphite-000: #050506;
+  --graphite-100: #09090b;
+  --graphite-200: #101114;
+  --graphite-300: #1b1c20;
+  --graphite-500: #686a70;
+  --optical-white: #f3f2ee;
+  --optical-white-muted: #b9b8b3;
+  --paper-light: #e9e8e3;
+  --ink-on-light: #0b0b0d;
+  --ink-muted-on-light: #535359;
+  --causal-red: #f04455;
+  --causal-red-dim: rgba(240, 68, 85, 0.22);
+  --uncertainty: #d8a84e;
+  --verified: #76b99a;
+  --seam-dark: rgba(243, 242, 238, 0.22);
+  --seam-light: rgba(11, 11, 13, 0.18);
 
-  /* Typography Scale */
-  --font-display: "Roboto Flex", "Arial Narrow", Arial, sans-serif;
-  --font-body: "Inter", Helvetica, Arial, sans-serif;
-  --font-editorial: "Source Serif 4", Georgia, serif;
-  --font-mono: "IBM Plex Mono", Consolas, monospace;
+  /* ── Typography (§7, lines 974–988) ── */
+  --font-display: "Roboto Flex", "Arial Narrow", sans-serif;
+  --font-ui: "Geist Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
 
-  --hero: clamp(82px, 9.4vw, 148px);
-  --tableau: clamp(58px, 6.4vw, 104px);
-  --page-title: clamp(72px, 10vw, 156px);
-  --index-title: clamp(38px, 4vw, 64px);
-  --body-large: clamp(20px, 1.6vw, 28px);
-  --body: clamp(16px, 1.08vw, 19px);
-  --meta-size: 11px;
-  --nav: 13px;
+  --display-hero: clamp(4rem, 8.9vw, 9.25rem);
+  --display-scene: clamp(3.1rem, 6.2vw, 6.5rem);
+  --display-route: clamp(2.75rem, 5.2vw, 5.5rem);
+  --title-xl: clamp(2rem, 3.2vw, 3.5rem);
+  --title-lg: clamp(1.5rem, 2.1vw, 2.25rem);
+  --body-lg: clamp(1.0625rem, 1.3vw, 1.25rem);
+  --body: 1rem;
+  --meta: 0.75rem;
 
-  /* Layout */
-  --page-gutter: 32px;
-  --header-height: 80px;
+  /* ── Spacing Tokens (§8, lines 1066–1079) ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 144px;
+  --space-11: 192px;
 
-  /* Z-Index Strata */
+  /* ── Desktop Grid (§8, lines 1039–1048) ── */
+  --page-gutter: 48px;
+  --page-gutter-wide: 64px;
+  --grid-columns: 24;
+  --grid-gap: 12px;
+  --max-content-width: 1680px;
+  --header-safe-height: 80px;
+  --header-height: 48px;
+  --bottom-safe: 74px;
+
+  /* ── Z-Index Strata ── */
   --z-world: 0;
-  --z-connection-layer: 10;
-  --z-ui: 20;
-  --z-header: 50;
+  --z-scene-copy: 5;
+  --z-ui: 10;
+  --z-header: 40;
+  --z-overlay: 50;
+  --z-map: 60;
+  --z-modal: 100;
+
+  /* ── Motion Tokens (§16, lines 1942–1965) ── */
+  --duration-acknowledge: 60ms;
+  --duration-micro: 160ms;
+  --duration-quick: 240ms;
+  --duration-standard: 420ms;
+  --duration-panel: 560ms;
+  --duration-route: 720ms;
+  --duration-cinematic: 1280ms;
+
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-move: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html {
-  color-scheme: light;
-  background: var(--paper);
+/* ── Tablet Grid (§8, lines 1050–1054) ── */
+@media (max-width: 1179px) and (min-width: 768px) {
+  :root {
+    --page-gutter: 32px;
+    --grid-columns: 12;
+  }
 }
 
-body {
-  margin: 0;
-  color: var(--ink);
-  background: var(--paper);
-  font-family: var(--font-display);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ── Mobile Grid (§8, lines 1056–1062) ── */
+@media (max-width: 767px) {
+  :root {
+    --page-gutter: 20px;
+    --grid-columns: 6;
+    --grid-gap: 8px;
+    --header-height: 48px;
+  }
+}
+
+/* ── Wide Grid (§8, line 1043) ── */
+@media (min-width: 1680px) {
+  :root {
+    --page-gutter: var(--page-gutter-wide);
+  }
 }

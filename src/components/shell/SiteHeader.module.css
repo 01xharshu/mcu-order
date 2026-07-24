@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════════════════
+   THE MCU CONTINUUM — Site Header
+   Master Prompt §10, lines 1159–1203
+   
+   Desktop at 1440×900:
+   - Product name: x 48, y 30 — 13px, 560 weight
+   - Route nav: x 1000, y 30 — 12px, 500 weight
+   - INDEX: x 1330, y 30
+   - Height: 48px (safe zone: 80px)
+   - No background bar unless scrolled past the Aperture
+   - Active route: 24px registered seam beneath label
+   ═══════════════════════════════════════════════════════════════ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-interface);
+  height: 80px; /* Safe zone */
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transition: background var(--trans-register) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.headerInner {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  height: 100%;
+}
+
+.header.scrolled {
+  background: rgba(5, 5, 6, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mix-blend-mode: normal;
+}
+
+.header > * {
+  pointer-events: auto;
+}
+
+/* ── Brand ── */
+.brand {
+  position: absolute;
+  left: var(--page-gutter); /* 48px on standard desktop */
+  top: 30px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 560;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--optical-white);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+/* ── Navigation ── */
+.nav {
+  display: flex;
+  position: absolute;
+  top: 30px;
+  left: 1000px; /* Precise spec from prompt for 1440px desktop */
+  align-items: center;
+  gap: 32px;
+  pointer-events: auto;
+}
+
+.navLink {
+  position: relative;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--optical-white);
+  text-decoration: none;
+  line-height: 1;
+  transition: opacity var(--trans-acknowledge);
+}
+
+.navLink:hover {
+  opacity: 0.7;
+}
+
+/* Active route: 24px registered seam beneath label (§10, line 1175) */
+.navLink.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 24px;
+  height: 1px;
+  background: var(--causal-red);
+}
+
+/* ── Index / Continuum Map Toggle ── */
+.indexButton {
+  position: absolute;
+  top: 30px;
+  right: var(--page-gutter); /* Exact right edge alignment, ~1330 at 1440 */
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--optical-white);
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: opacity var(--trans-acknowledge);
+  pointer-events: auto;
+}
+
+.indexButton:hover {
+  opacity: 0.7;
+}
+
+/* ── Tablet & Small Desktop (graceful degradation from 1440 lock) ── */
+@media (max-width: 1439px) {
+  .nav {
+    left: auto;
+    right: 120px;
+    gap: 24px;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .nav {
+    display: none; /* Routes accessible via Continuum Map on mobile */
+  }
+  
+  .brand {
+    left: var(--page-gutter); /* 20px */
+    top: calc(env(safe-area-inset-top) + 18px);
+  }
+
+  .indexButton {
+    right: var(--page-gutter); /* 20px */
+    top: calc(env(safe-area-inset-top) + 18px);
+  }
+}
