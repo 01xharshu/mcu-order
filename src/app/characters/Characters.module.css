@@ -1,0 +1,128 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+  padding-top: var(--header-safe-height);
+  padding-bottom: var(--bottom-safe-area);
+  /* The layout uses global CSS Grid, so we just set row gap */
+  align-items: start;
+}
+
+/* ── Route Title & Search (§15: x 48, y 112) ── */
+.titleArea {
+  grid-column: 1 / span 6;
+  margin-top: 32px; /* 112 - 80 safe height */
+  font-family: var(--font-ui);
+  font-size: var(--body-base);
+  color: var(--optical-white-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Alphabetical Index (§15: x 48, y 218, w 610) ── */
+.indexArea {
+  grid-column: 1 / span 8;
+  margin-top: 74px; /* 218 - 112 = 106 - 32 = 74px */
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* ── Lives Field (§15: x 650, y 50, w 790, h 850) ── */
+.livesField {
+  grid-column: 11 / span 12;
+  margin-top: -30px; /* 50 - 80 = -30px */
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+/* ── Typography Scale (§15) ── */
+.characterLink {
+  text-decoration: none;
+  display: block;
+  transition: opacity var(--trans-acknowledge);
+  margin-block: var(--space-3);
+}
+
+.characterLink:hover {
+  opacity: 0.8;
+}
+
+.focusedName {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 5vw, 82px);
+  font-weight: 560;
+  text-transform: uppercase;
+  color: var(--optical-white);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+/* Seam connecting focused name baseline */
+.focusedName::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background: var(--seam-dark);
+  z-index: -1;
+}
+
+.adjacentName {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 28px);
+  text-transform: uppercase;
+  color: var(--optical-white-muted);
+  opacity: 0.5;
+}
+
+/* ── Explorer Hold/Toggle Metadata ── */
+.metadataPanel {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: var(--space-6);
+  width: 300px;
+  font-family: var(--font-ui);
+  font-size: var(--body-base);
+  color: var(--optical-white-muted);
+}
+
+.metadataPanel dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.metadataPanel dt {
+  color: var(--graphite-500);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-1);
+}
+
+.metadataPanel dd {
+  margin: 0;
+  color: var(--optical-white);
+}
+
+/* ── Tablet & Mobile Degradation ── */
+@media (max-width: 1179px) {
+  .titleArea, .indexArea {
+    grid-column: 1 / span 12;
+    margin-top: var(--space-6);
+  }
+  .livesField {
+    grid-column: 1 / span 12;
+    margin-top: var(--space-8);
+    height: auto;
+    min-height: 60vh;
+  }
+}

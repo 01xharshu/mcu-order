@@ -1,0 +1,21 @@
+.atlas { display: grid; grid-template-columns: minmax(280px, .76fr) minmax(0, 1.24fr); gap: clamp(var(--space-8), 9vw, var(--space-11)); padding: clamp(120px, 15vw, 216px) var(--page-gutter); background: var(--graphite-200); overflow: hidden; }
+.heading > p, .period { color: var(--graphite-500); font-size: var(--meta); font-weight: 650; letter-spacing: .1em; line-height: 1.25; }
+.heading h2 { max-width: 9ch; margin-top: var(--space-5); color: var(--optical-white); font-family: var(--font-display); font-size: var(--display-scene); font-weight: 560; font-variation-settings: "wdth" 78; letter-spacing: -.05em; line-height: .84; }
+.explorer { min-width: 0; }
+.tabs { display: flex; border-top: 1px solid var(--seam-dark); }
+.tabs button { display: grid; flex: 1; min-width: 0; min-height: 92px; grid-template-columns: 20px 1fr; gap: var(--space-3); align-items: start; justify-content: start; padding: var(--space-5) var(--space-4) var(--space-4) 0; border: 0; border-bottom: 1px solid var(--seam-dark); border-radius: 0; background: transparent; color: var(--graphite-500); font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 560; letter-spacing: -.035em; line-height: .92; text-align: left; }
+.tabs button + button { padding-left: var(--space-4); border-left: 1px solid var(--seam-dark); }
+.tabs button span { color: currentColor; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; }
+.tabs button[aria-selected="true"] { color: var(--optical-white); }
+.stage { position: relative; min-height: 570px; margin-top: var(--space-6); overflow: hidden; padding: var(--space-7); background: linear-gradient(125deg, rgba(243,242,238,.07), transparent 43%), radial-gradient(ellipse at 80% 80%, rgba(240,68,85,.16), transparent 40%), var(--graphite-100); isolation: isolate; }
+.stage::after { position: absolute; z-index: -1; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 calc(16.666% - 1px), rgba(243,242,238,.08) calc(16.666% - 1px) 16.666%); content: ""; opacity: .42; }
+.eraNumber { position: absolute; z-index: -1; right: -0.08em; bottom: -0.23em; color: rgba(243,242,238,.06); font-family: var(--font-display); font-size: clamp(19rem, 39vw, 35rem); font-weight: 560; letter-spacing: -.12em; line-height: .75; }
+.seam { position: absolute; top: 0; bottom: 0; left: 56%; width: 1px; background: var(--optical-white); opacity: .88; }
+.stage h3 { max-width: 7ch; margin-top: var(--space-4); color: var(--optical-white); font-family: var(--font-display); font-size: clamp(3.4rem, 6.1vw, 6.2rem); font-weight: 560; font-variation-settings: "wdth" 76; letter-spacing: -.055em; line-height: .82; }
+.body { max-width: 36ch; margin-top: var(--space-6); color: var(--optical-white-muted); font-size: var(--body-lg); line-height: 1.55; }
+.stage ol { max-width: 42ch; margin-top: var(--space-7); border-top: 1px solid var(--seam-dark); }
+.stage li { display: grid; grid-template-columns: 30px 1fr; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--seam-dark); color: var(--optical-white); font-family: var(--font-display); font-size: var(--title-lg); font-variation-settings: "wdth" 88; letter-spacing: -.03em; line-height: 1; }
+.stage li span { color: var(--graphite-500); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; }
+.archiveLink { display: inline-flex; gap: var(--space-3); min-height: 44px; align-items: center; margin-top: var(--space-6); border-bottom: 1px solid var(--optical-white); color: var(--optical-white); font-size: var(--meta); font-weight: 650; letter-spacing: .08em; }
+.archiveLink:hover { color: var(--causal-red); border-bottom-color: var(--causal-red); }
+@media (max-width: 767px) { .atlas { display: block; padding: 96px var(--page-gutter); } .explorer { margin-top: var(--space-8); } .tabs { display: block; } .tabs button { width: 100%; min-height: 58px; padding: var(--space-4) 0; } .tabs button + button { padding-left: 0; border-left: 0; } .stage { min-height: 550px; padding: var(--space-5); } .seam { left: 69%; } .stage h3 { font-size: clamp(3rem, 13vw, 4.5rem); } .eraNumber { font-size: 20rem; } .stage li { font-size: 1.35rem; } }

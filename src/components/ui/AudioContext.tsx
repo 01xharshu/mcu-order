@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { usePreferenceStore } from "@/lib/stores/preferenceStore";
+import { useProductStore } from "@/stores/productStore";
 
 export function AudioContext() {
-  const soundEnabled = usePreferenceStore(s => s.soundEnabled);
-  const setSoundEnabled = usePreferenceStore(s => s.setSoundEnabled);
+  const soundEnabled = useProductStore((state) => state.soundEnabled);
+  const toggleSound = useProductStore((state) => state.toggleSound);
   const [audioLoaded, setAudioLoaded] = useState(false);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const oscRef = useRef<OscillatorNode | null>(null);
@@ -15,7 +15,8 @@ export function AudioContext() {
     // We synthesize a subtle hum instead of relying on external assets to keep it dependency-free
     const initAudio = () => {
       if (audioCtxRef.current) return;
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const audioWindow = window as Window & typeof globalThis & { webkitAudioContext?: typeof globalThis.AudioContext };
+      const AudioContextClass = audioWindow.AudioContext || audioWindow.webkitAudioContext;
       if (!AudioContextClass) return;
       
       const ctx = new AudioContextClass();
@@ -64,7 +65,7 @@ export function AudioContext() {
 
   return (
     <button 
-      onClick={() => setSoundEnabled(!soundEnabled)}
+      onClick={toggleSound}
       className="fixed bottom-8 right-8 z-[var(--z-header)] text-[10px] tracking-widest uppercase text-muted hover:text-arc transition-colors bg-void/50 backdrop-blur-md px-3 py-1.5 rounded border border-white/5"
     >
       Audio: {soundEnabled ? "ON" : "OFF"}

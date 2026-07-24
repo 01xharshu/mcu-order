@@ -15,7 +15,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import styles from "./SiteHeader.module.css";
 import { ContinuumMap } from "./ContinuumMap";
 
@@ -28,18 +28,7 @@ const NAV_ROUTES = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
-
-  const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 120);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
 
   useEffect(() => {
     if (mapOpen) {
@@ -57,13 +46,13 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}
+      className={styles.header}
       role="banner"
     >
       <div className={styles.headerInner}>
         {/* Brand — §10: x 48, y 30, 13px, 560 weight */}
-        <Link href="/" className={styles.brand} aria-label="THE MCU CONTINUUM — Home">
-          THE MCU CONTINUUM
+        <Link href="/" className={styles.brand} aria-label="THE MCU EXPERIENCE — Home">
+          THE MCU EXPERIENCE
         </Link>
 
         {/* Navigation — §10: x 1000, y 30, 12px, 500 weight */}

@@ -1,0 +1,30 @@
+.composer { margin-top: var(--space-9); }
+.modeRow { display: flex; flex-wrap: wrap; gap: var(--space-5); border-bottom: 1px solid var(--seam-dark); }
+.modeRow button { min-width: 0; min-height: 42px; padding: 0 0 var(--space-2); border: 0; border-bottom: 1px solid transparent; border-radius: 0; color: var(--graphite-500); font-size: var(--meta); font-weight: 560; letter-spacing: .08em; }
+.modeRow button[aria-pressed="true"] { color: var(--optical-white); border-bottom-color: var(--optical-white); }
+.body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: clamp(48px, 9vw, 144px); align-items: start; padding-top: var(--space-8); }
+.active { position: relative; min-height: 500px; padding-left: var(--space-6); }
+.active > p:first-of-type { color: var(--graphite-500); font-size: var(--meta); font-weight: 560; letter-spacing: .1em; }
+.active h2 { position: relative; z-index: 1; max-width: 8ch; margin: calc(var(--space-7) * -1) 0 var(--space-5); font-size: clamp(3.5rem, 7vw, 7.6rem); font-variation-settings: "wdth" 79; line-height: .84; }
+.active > p:nth-of-type(2) { max-width: 38ch; color: var(--optical-white-muted); font-size: var(--body-lg); line-height: 1.5; }
+.pathNote { max-width: 40ch; margin-top: var(--space-6); color: var(--graphite-500); font-size: .875rem; }
+.active :global(.reading-link) { margin-top: var(--space-6); }
+.watched { width: fit-content; min-width: 0; margin-top: var(--space-6); border-color: var(--seam-dark); color: var(--optical-white-muted); font-size: var(--meta); font-weight: 600; letter-spacing: .07em; }
+.watched[aria-pressed="true"] { border-color: var(--verified); color: var(--verified); }
+.sequenceNo { display: block; margin-left: -0.14em; color: rgba(243,242,238,.42); font-family: var(--font-display); font-size: clamp(9rem, 20vw, 19rem); font-weight: 560; letter-spacing: -.08em; line-height: .8; }
+.seam { position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: var(--optical-white); }
+.sequence { border-top: 1px solid var(--seam-dark); }
+.entry, .selected { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; width: 100%; min-height: 58px; gap: var(--space-3); align-items: baseline; padding: var(--space-3) 0; border: 0; border-bottom: 1px solid var(--seam-dark); border-radius: 0; background: transparent; color: var(--optical-white-muted); text-align: left; }
+.selected { color: var(--optical-white); }
+.entry:hover { color: var(--optical-white); }
+.entry span, .selected span, .entry small, .selected small { color: var(--graphite-500); font-family: var(--font-mono); font-size: .7rem; letter-spacing: .04em; }
+.entry strong, .selected strong { font-family: var(--font-display); font-size: var(--title-lg); font-weight: 550; letter-spacing: -.02em; line-height: .95; }
+.saveArea { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr); gap: clamp(48px, 9vw, 144px); margin-top: var(--space-10); padding-top: var(--space-9); border-top: 1px solid var(--seam-dark); }
+.saveArea > div:first-child > p, .saveArea li button { color: var(--graphite-500); font-size: var(--meta); font-weight: 600; letter-spacing: .08em; }
+.saveArea h2 { max-width: 9ch; margin-top: var(--space-4); font-size: clamp(2.6rem, 4.6vw, 4.8rem); line-height: .87; }
+.saveArea > div:last-child > p { max-width: 48ch; color: var(--optical-white-muted); line-height: 1.5; }
+.saveArea ol { margin-top: var(--space-6); border-top: 1px solid var(--seam-dark); }
+.saveArea li { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 52px; border-bottom: 1px solid var(--seam-dark); color: var(--optical-white-muted); }
+.saveArea li button { min-width: 0; min-height: 36px; padding: 0; border: 0; border-bottom: 1px solid transparent; border-radius: 0; }
+.saveArea li button[aria-pressed="true"] { border-bottom-color: var(--verified); color: var(--verified); }
+@media (max-width: 767px) { .body, .saveArea { display: block; padding-top: var(--space-7); } .active { min-height: 0; margin-bottom: var(--space-8); } .active h2 { font-size: clamp(3.25rem, 15vw, 5rem); } .sequenceNo { font-size: 9rem; } .saveArea > div:last-child { margin-top: var(--space-7); } }

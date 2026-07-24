@@ -28,22 +28,6 @@
   text-transform: uppercase;
 }
 
-/* Spoiler States */
-.toggle.safe {
-  background: var(--graphite-200);
-  color: var(--verified);
-}
-
-.toggle.watched {
-  background: var(--graphite-200);
-  color: var(--uncertainty);
-}
-
-.toggle.full {
-  background: var(--causal-red-dim);
-  color: var(--causal-red);
-}
-
 /* Sound States */
 .toggle.off {
   background: transparent;

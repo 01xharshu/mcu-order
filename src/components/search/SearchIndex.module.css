@@ -1,0 +1,18 @@
+.search { min-height: 100vh; padding: clamp(116px, 13vw, 184px) var(--page-gutter); background: var(--graphite-000); }
+.search header { max-width: 840px; }
+.search header > p:first-child, .results p:first-child { color: var(--graphite-500); font-size: var(--meta); font-weight: 600; letter-spacing: .1em; }
+.search h1 { margin: var(--space-5) 0 var(--space-6); font-size: clamp(4rem, 9vw, 8.5rem); font-variation-settings: "wdth" 76; line-height: .82; }
+.search header > p:last-child { max-width: 48ch; color: var(--optical-white-muted); font-size: var(--body-lg); }
+.field { display: grid; grid-template-columns: 1fr auto; gap: var(--space-5); align-items: center; margin-top: clamp(72px, 10vw, 144px); border-bottom: 1px solid var(--seam-dark); }
+.field input { width: 100%; min-height: 68px; border: 0; outline: 0; background: transparent; color: var(--optical-white); font: 560 clamp(1.35rem, 2.4vw, 2.1rem)/1 var(--font-display); letter-spacing: -.02em; }
+.field input::placeholder { color: var(--graphite-500); }
+.field > span:last-child { color: var(--graphite-500); font: 500 var(--meta)/1 var(--font-mono); letter-spacing: .07em; }
+.results { margin-top: var(--space-7); border-top: 1px solid var(--seam-dark); }
+.results li { border-bottom: 1px solid var(--seam-dark); }
+.results a { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: var(--space-4); padding: var(--space-5) 0; color: var(--optical-white); }
+.results a:hover h2 { color: var(--causal-red); }
+.results li > a > span { padding-top: 4px; color: var(--graphite-500); font: 500 var(--meta)/1 var(--font-mono); }
+.results h2 { margin: var(--space-2) 0; font-size: var(--title-lg); line-height: .95; transition: color var(--trans-acknowledge); }
+.results div > p:last-child { max-width: 62ch; color: var(--optical-white-muted); }
+.empty { margin-top: var(--space-7); color: var(--optical-white-muted); font-size: var(--body-lg); }
+@media (max-width: 767px) { .search { padding-top: 104px; } .search h1 { font-size: clamp(3.5rem, 15vw, 5rem); } .field { grid-template-columns: 1fr; gap: var(--space-2); } .field input { min-height: 56px; } .field > span:last-child { padding-bottom: var(--space-3); } }

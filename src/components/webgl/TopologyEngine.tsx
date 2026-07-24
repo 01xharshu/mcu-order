@@ -10,7 +10,6 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { engine } from "@/engine/ExperienceEngine";
-import { SCENES } from "@/config/scenes";
 import {
   PreludeScene,
   SparkScene,

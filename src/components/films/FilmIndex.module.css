@@ -1,0 +1,29 @@
+.index { display: grid; grid-template-columns: minmax(320px, 560px) minmax(0, 1fr); gap: clamp(48px, 7vw, 112px); align-items: start; }
+.listField { min-width: 0; }
+.listHeading { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); color: var(--graphite-500); font-size: var(--meta); font-weight: 560; letter-spacing: .1em; }
+.searchLabel input { width: 150px; min-height: 36px; border: 0; border-bottom: 1px solid var(--seam-dark); border-radius: 0; padding: 0; background: transparent; color: var(--optical-white); font: inherit; font-size: .875rem; letter-spacing: 0; }
+.searchLabel input:focus { outline: 0; border-bottom-color: var(--optical-white); }
+.searchLabel input::placeholder { color: var(--graphite-500); }
+.filters { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; padding: var(--space-5) 0 var(--space-4); }
+.filters button { min-width: 0; min-height: 36px; padding: 0; border: 0; border-bottom: 1px solid transparent; border-radius: 0; color: var(--graphite-500); font-size: var(--meta); font-weight: 600; letter-spacing: .08em; }
+.filters button[aria-pressed="true"] { border-bottom-color: var(--optical-white); color: var(--optical-white); }
+.phaseSelect select { min-height: 36px; border: 0; border-bottom: 1px solid var(--seam-dark); border-radius: 0; background: transparent; color: var(--optical-white-muted); font: 600 var(--meta)/1 var(--font-ui); letter-spacing: .06em; }
+.list { border-top: 1px solid var(--seam-dark); }
+.item, .focused { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: var(--space-3); align-items: baseline; min-height: 52px; padding: var(--space-3) 0; border-bottom: 1px solid var(--seam-dark); color: var(--optical-white-muted); }
+.focused { color: var(--optical-white); }
+.item:hover { color: var(--optical-white); }
+.order, .meta { color: var(--graphite-500); font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .04em; }
+.title { font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.55rem); font-weight: 550; letter-spacing: -.025em; line-height: .95; }
+.focused .title { font-size: clamp(2rem, 3.4vw, 3.25rem); font-variation-settings: "wdth" 86; }
+.focusField { position: sticky; top: 96px; min-height: 720px; overflow: hidden; isolation: isolate; display: flex; align-items: flex-end; padding: var(--space-7); background: var(--graphite-200); }
+.focusField::after { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, var(--graphite-200) 0%, rgba(16,17,20,.42) 54%, rgba(16,17,20,.06)); content: ""; }
+.image { z-index: -2; object-fit: cover; object-position: right center; opacity: .78; filter: saturate(.52) contrast(1.05); }
+.seam { position: absolute; top: 8%; bottom: 8%; left: 47%; width: 1px; background: var(--optical-white); }
+.focusCopy { max-width: min(520px, 70%); }
+.focusCopy > p:first-child { color: var(--optical-white-muted); font-family: var(--font-mono); font-size: var(--meta); letter-spacing: .06em; }
+.focusCopy h2 { margin: var(--space-4) 0; font-family: var(--font-display); font-size: clamp(3.1rem, 5.3vw, 5.6rem); font-weight: 560; letter-spacing: -.05em; line-height: .85; text-transform: uppercase; font-variation-settings: "wdth" 80; }
+.focusCopy > p:nth-of-type(2) { max-width: 38ch; color: var(--optical-white-muted); font-size: var(--body-lg); line-height: 1.5; }
+.memory { max-width: 36ch; margin-top: var(--space-5); border-left: 1px solid var(--causal-red); padding-left: var(--space-4); color: var(--optical-white); font-family: var(--font-display); font-size: var(--title-lg); font-variation-settings: "wdth" 92; letter-spacing: -.03em; line-height: 1; }
+.focusCopy :global(.reading-link) { margin-top: var(--space-5); }
+.empty { padding: var(--space-6) 0; color: var(--optical-white-muted); border-top: 1px solid var(--seam-dark); }
+@media (max-width: 767px) { .index { display: flex; flex-direction: column-reverse; gap: var(--space-7); } .focusField { position: relative; top: auto; width: calc(100% + var(--page-gutter) * 2); min-height: 52svh; margin-inline: calc(var(--page-gutter) * -1); padding: var(--page-gutter); } .focusCopy { max-width: 75%; } .focusCopy h2 { font-size: clamp(3rem, 14vw, 4.6rem); } .item, .focused { grid-template-columns: 26px minmax(0, 1fr); } .item .meta, .focused .meta { grid-column: 2; } }

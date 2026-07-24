@@ -1,6 +1,22 @@
 import { Film } from "../lib/content/schemas";
+import { filmNarratives } from "./filmNarratives";
 
-export const films: Film[] = [
+const CATALOG_URL = "https://www.marvel.com/movies?nav=1";
+const ACCESSED_AT = "2026-07-24";
+
+function catalogSource(id: string, title: string, status: Film["status"]) {
+  return {
+    id: `marvel-movies-${id}`,
+    label: status === "released" ? `${title} — released work and official catalog entry` : `${title} — official catalog entry`,
+    url: CATALOG_URL,
+    publisher: "Marvel",
+    sourceType: status === "released" ? "released-work" as const : "official-site" as const,
+    accessedAt: ACCESSED_AT,
+    supportsClaimIds: [`film:${id}:identity`, `film:${id}:status`],
+  };
+}
+
+const filmSeeds = [
   // PHASE ONE
   { id: "iron-man", title: "Iron Man", releaseYear: 2008, releaseOrder: 1, chronologicalOrder: 3, phase: 1, spoilerSafePremise: "Tony Stark builds an armored suit to escape captivity.", whyItMattersSafe: "Establishes Tony Stark and the MCU.", watchNextIds: ["incredible-hulk"], prerequisiteIds: [], sources: [] },
   { id: "incredible-hulk", title: "The Incredible Hulk", releaseYear: 2008, releaseOrder: 2, chronologicalOrder: 4, phase: 1, spoilerSafePremise: "Bruce Banner seeks a cure for his gamma radiation.", whyItMattersSafe: "Introduces the Hulk.", watchNextIds: ["iron-man-2"], prerequisiteIds: ["iron-man"], sources: [] },
@@ -54,3 +70,37 @@ export const films: Film[] = [
   { id: "avengers-secret-wars", title: "Avengers: Secret Wars", releaseYear: 2027, releaseOrder: 40, chronologicalOrder: 39, phase: 6, spoilerSafePremise: "The climax of the Multiverse Saga.", whyItMattersSafe: "The culmination of phases 4-6.", watchNextIds: [], prerequisiteIds: ["avengers-doomsday"], sources: [] },
   { id: "blade", title: "Blade", releaseYear: 2027, releaseOrder: 41, chronologicalOrder: null, phase: 6, spoilerSafePremise: "TBD", whyItMattersSafe: "TBD", watchNextIds: [], prerequisiteIds: [], sources: [] }
 ];
+
+/**
+ * The seed list stays compact for editorial review. This adapter supplies the
+ * production fields that every route and validator consumes. Future entries
+ * deliberately remain chronology-unknown until a released work verifies them.
+ */
+export const films: Film[] = filmSeeds.map((seed) => {
+  const status: Film["status"] = seed.id === "blade"
+    ? "tbd"
+    : seed.releaseYear <= 2025 ? "released" : "upcoming";
+  const isReleased = status === "released";
+  const safeFutureSummary = status === "tbd"
+    ? "Marvel lists this title without a verified release date or story detail."
+    : "Officially announced; its precise continuity position remains unknown until release.";
+
+  return {
+    ...seed,
+    phase: seed.phase as Film["phase"],
+    slug: seed.id,
+    releaseDate: null,
+    saga: seed.phase <= 3 ? "Infinity Saga" : "Multiverse Saga",
+    status,
+    runtimeMinutes: null,
+    chronologicalOrder: isReleased ? seed.chronologicalOrder : null,
+    spoilerSafePremise: isReleased ? seed.spoilerSafePremise : safeFutureSummary,
+    whyItMattersSafe: isReleased ? seed.whyItMattersSafe : "Only official, pre-release information is shown here.",
+    fullStory: isReleased ? filmNarratives[seed.id]?.fullStory ?? seed.spoilerSafePremise : undefined,
+    fullConsequence: isReleased ? filmNarratives[seed.id]?.fullConsequence ?? seed.whyItMattersSafe : undefined,
+    keyTurns: isReleased ? filmNarratives[seed.id]?.keyTurns ?? [] : [],
+    memory: isReleased ? filmNarratives[seed.id]?.memory : undefined,
+    sources: [catalogSource(seed.id, seed.title, status)],
+    claimConfidence: isReleased ? "confirmed" as const : "unknown" as const,
+  };
+});

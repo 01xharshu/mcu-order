@@ -12,7 +12,6 @@
  * React receives active scene changes only after the scene crosses a stable threshold.
  */
 
-import { damp } from "maath/easing";
 
 /**
  * Shared damping function that mirrors the spec's use of maath/easing damp.

@@ -3,7 +3,7 @@
  * Master Prompt §41, lines 4161–4186
  *
  * Zustand stores only product state.
- * Persist only watched IDs, spoiler mode, sound preference,
+ * Persist only watched IDs, sound preference,
  * quality override, and saved watch path.
  * Do not update Zustand every frame.
  */
@@ -11,14 +11,9 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type SpoilerMode = "safe" | "watched" | "full";
 type QualityOverride = "auto" | "static" | "low" | "medium" | "high";
 
 interface ProductStore {
-  /* ── Spoiler System ── */
-  spoilerMode: SpoilerMode;
-  setSpoilerMode: (mode: SpoilerMode) => void;
-
   /* ── Watch State ── */
   watchedIds: string[];
   markWatched: (id: string) => void;
@@ -53,7 +48,6 @@ interface ProductStore {
 }
 
 const INITIAL_STATE = {
-  spoilerMode: "safe" as SpoilerMode,
   watchedIds: [] as string[],
   soundEnabled: false,
   reducedVisuals: false,
@@ -67,8 +61,6 @@ export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
       ...INITIAL_STATE,
-
-      setSpoilerMode: (mode) => set({ spoilerMode: mode }),
 
       markWatched: (id) =>
         set((state) => ({
@@ -99,7 +91,6 @@ export const useProductStore = create<ProductStore>()(
       name: "mcu-continuum-product",
       /* Only persist product state, not ephemeral UI state */
       partialize: (state) => ({
-        spoilerMode: state.spoilerMode,
         watchedIds: state.watchedIds,
         soundEnabled: state.soundEnabled,
         qualityOverride: state.qualityOverride,

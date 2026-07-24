@@ -1,0 +1,7 @@
+.page { padding: 112px var(--page-gutter) var(--space-11); }
+.hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .6fr); gap: var(--space-7); align-items: end; max-width: var(--max-content-width); margin: 0 auto clamp(56px, 6vw, 96px); padding-top: var(--space-5); }
+.hero > p:first-child { grid-column: 1 / -1; color: var(--graphite-500); font-size: var(--meta); font-weight: 560; letter-spacing: .1em; }
+.hero h1 { max-width: 10ch; font-size: clamp(3.7rem, 6.2vw, 6.5rem); font-variation-settings: "wdth" 80; }
+.hero > p:last-child { max-width: 31ch; color: var(--optical-white-muted); font-size: var(--body-lg); line-height: 1.5; }
+.hero span { position: absolute; top: 29%; bottom: -14%; left: 66%; width: 1px; background: var(--optical-white); }
+@media (max-width: 767px) { .page { padding-top: 88px; } .hero { display: block; margin-bottom: var(--space-8); } .hero h1 { margin: var(--space-5) 0 var(--space-7); font-size: clamp(3.25rem, 14.5vw, 5rem); } .hero span { top: 26%; bottom: -24px; left: 70%; } }

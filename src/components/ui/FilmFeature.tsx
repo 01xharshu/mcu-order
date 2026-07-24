@@ -9,7 +9,7 @@ export function FilmFeature({ film }: { film: Film }) {
         <span>Year: {film.releaseYear}</span>
         <span>Phase: {film.phase}</span>
       </div>
-      <p className="text-mcu-primary/80">{film.spoilerSafePremise}</p>
+      <p className="text-mcu-primary/80">{film.fullStory ?? film.spoilerSafePremise}</p>
     </div>
   );
 }

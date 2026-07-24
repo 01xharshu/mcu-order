@@ -9,27 +9,19 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useState } from "react";
 import { CameraRig } from "./CameraRig";
 import { NarrativeLighting } from "./NarrativeLighting";
 import { TopologyEngine } from "./TopologyEngine";
 import { PostEffects } from "./PostEffects";
 import { governor } from "@/engine/qualityGovernor";
-import { engine } from "@/engine/ExperienceEngine";
 
 export function ExperienceCanvas() {
-  const [mounted, setMounted] = useState(false);
   const [contextLost, setContextLost] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
   if (contextLost) {
     return (
-      <div className="absolute inset-0 flex items-center justify-center bg-graphite-100 text-optical-white">
-        <p>WebGL Context Lost. Please refresh the page.</p>
+      <div className="webgl-status">
+        <p>The reading experience remains available. The optional visual layer could not start.</p>
       </div>
     );
   }

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { useWatchStore } from "../../lib/stores/watchStore";
 import { films } from "../../content/films";
-import Link from "next/link";
 
 export function WatchProgressSummary() {
   const [mounted, setMounted] = useState(false);
@@ -20,7 +19,7 @@ export function WatchProgressSummary() {
   if (watchedIds.length === 0) {
     return (
       <div className="bg-elevated/30 border border-white/5 rounded-[var(--radius-medium)] p-8 text-center">
-        <p className="text-muted mb-4">You haven't marked any films as watched yet.</p>
+        <p className="text-muted mb-4">You haven&apos;t marked any films as watched yet.</p>
         <p className="text-sm">Progress is saved locally on your device.</p>
       </div>
     );

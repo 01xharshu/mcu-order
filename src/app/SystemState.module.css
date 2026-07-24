@@ -1,0 +1,7 @@
+.state { display: grid; min-height: 100svh; place-items: center; padding: 120px var(--page-gutter) var(--space-8); background: var(--graphite-000); }
+.state > div { width: min(100%, 760px); }
+.state p:first-child { color: var(--graphite-500); font-size: var(--meta); font-weight: 600; letter-spacing: .1em; }
+.state h1 { max-width: 9ch; margin: var(--space-5) 0 var(--space-6); font-size: clamp(3.5rem, 9vw, 8rem); font-variation-settings: "wdth" 78; line-height: .82; }
+.state p:last-of-type { max-width: 52ch; color: var(--optical-white-muted); font-size: var(--body-lg); line-height: 1.55; }
+.state a, .state button { margin-top: var(--space-7); }
+.state button { border-color: var(--seam-dark); color: var(--optical-white); }

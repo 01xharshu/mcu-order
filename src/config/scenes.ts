@@ -76,17 +76,18 @@ export const SCENES: ContinuumScene[] = [
     description: "The heroes assemble."
   },
   {
-    id: "snapshot",
-    name: "Snapshot",
-    topology: "flat",
+    id: "worlds",
+    name: "Worlds",
+    topology: "expanded",
     scrollRange: [0.350, 0.485],
     stablePoint: 0.410,
     topologyAssetIds: [],
     keyframes: [],
-    headline: "The Flat Record",
-    body: "The timeline stabilizes into a singular record of truth.",
-    worldVerb: "Stabilize",
-    description: "A moment of peace."
+    question: "How can grounded, mythic, and cosmic scales remain one story?",
+    headline: "One Story, Many Horizons",
+    body: "Three scales share a horizon and remain registered by the consequences that cross them.",
+    worldVerb: "Relate",
+    description: "The world expands without becoming disconnected."
   },
   {
     id: "fracture",
@@ -103,43 +104,46 @@ export const SCENES: ContinuumScene[] = [
     description: "The team breaks apart."
   },
   {
-    id: "snap",
-    name: "Snap",
+    id: "infinity",
+    name: "Infinity",
     topology: "absent",
-    scrollRange: [0.610, 0.730],
-    stablePoint: 0.670,
+    scrollRange: [0.610, 0.745],
+    stablePoint: 0.678,
     topologyAssetIds: [],
     keyframes: [],
-    headline: "The Snap",
-    body: "Half of all life vanishes in an instant.",
-    worldVerb: "Vanish",
-    description: "The universe suffers a massive loss."
+    question: "What does irreversible consequence look like?",
+    headline: "Absence Has Weight",
+    body: "A meaningful image and its expected rhythm become genuinely absent; what remains must carry the cost.",
+    worldVerb: "Remove",
+    description: "Absence is evidence, not an effect."
   },
   {
-    id: "blip",
-    name: "Blip",
-    topology: "absent",
-    scrollRange: [0.730, 0.810],
-    stablePoint: 0.770,
-    topologyAssetIds: [],
-    keyframes: [],
-    headline: "The Blip",
-    body: "Five years of emptiness.",
-    worldVerb: "Wait",
-    description: "The survivors endure the aftermath."
-  },
-  {
-    id: "restore",
-    name: "Restore",
+    id: "legacy",
+    name: "Legacy",
     topology: "woven",
-    scrollRange: [0.810, 0.920],
-    stablePoint: 0.865,
+    scrollRange: [0.745, 0.870],
+    stablePoint: 0.808,
     topologyAssetIds: [],
     keyframes: [],
-    headline: "The Return",
-    body: "The lost return, and the timeline is rewoven.",
-    worldVerb: "Reweave",
-    description: "A second chance at victory."
+    question: "How does unfinished responsibility transfer?",
+    headline: "Responsibility Moves",
+    body: "An incomplete cadence transfers to new temporal slices without pretending that loss was undone.",
+    worldVerb: "Inherit",
+    description: "Legacy changes the people who receive it."
+  },
+  {
+    id: "multiverse",
+    name: "Multiverse",
+    topology: "branched",
+    scrollRange: [0.870, 0.920],
+    stablePoint: 0.900,
+    topologyAssetIds: [],
+    keyframes: [],
+    question: "How can continuity branch without losing orientation?",
+    headline: "One Origin, Several Outcomes",
+    body: "A shared origin folds into bounded alternatives; the changed condition stays visible at every endpoint.",
+    worldVerb: "Branch",
+    description: "Possibility remains legible through consequence."
   },
   {
     id: "choose",
@@ -149,9 +153,9 @@ export const SCENES: ContinuumScene[] = [
     stablePoint: 0.980,
     topologyAssetIds: [],
     keyframes: [],
-    headline: "The Multiverse",
-    body: "Infinite possibilities branch out from the sacred timeline.",
-    worldVerb: "Branch",
-    description: "A decision must be made."
+    headline: "Choose What You Need To Understand",
+    body: "The journey resolves into a direct question and a route into the continuity.",
+    worldVerb: "Choose",
+    description: "The visitor carries the reading forward."
   }
 ];

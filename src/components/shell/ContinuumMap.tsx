@@ -8,19 +8,17 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./ContinuumMap.module.css";
-import { SpoilerControl } from "./SpoilerControl";
 import { SoundControl } from "./SoundControl";
-import { engine } from "@/engine/ExperienceEngine";
 
 const ROUTES = [
   { href: "/characters", label: "CHARACTERS", description: "Lives and decisions across the timeline" },
   { href: "/films", label: "FILMS", description: "The release catalog and consequence essays" },
   { href: "/timeline", label: "TIMELINE", description: "The chronological sequence of events" },
-  { href: "/watch", label: "WATCH", description: "Compose your intent-driven watch list" },
+  { href: "/watch", label: "WATCH", description: "Build a rewatch route through the saga" },
   { href: "/search", label: "SEARCH", description: "Universal lookup" },
   { href: "/sources", label: "SOURCES", description: "Canon verification and evidence" },
 ];
@@ -33,46 +31,67 @@ export function ContinuumMap({
   onClose: () => void;
 }) {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previousPathname = useRef(pathname);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    // Focus trap and esc listener
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (!isOpen) return;
+
+      if (e.key === "Escape") {
         onClose();
+        return;
+      }
+
+      if (e.key === "Tab" && dialogRef.current) {
+        const focusable = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Close map on route change
   useEffect(() => {
-    if (isOpen) {
+    if (previousPathname.current !== pathname && isOpen) {
       onClose();
     }
-  }, [pathname]);
+    previousPathname.current = pathname;
+  }, [pathname, isOpen, onClose]);
 
-  if (!mounted) return null;
+  useEffect(() => {
+    if (!isOpen) return;
+    const firstControl = dialogRef.current?.querySelector<HTMLElement>("button, a[href]");
+    firstControl?.focus();
+  }, [isOpen]);
 
   return (
     <div
       className={`${styles.container} ${isOpen ? styles.open : ""}`}
       aria-hidden={!isOpen}
       role="dialog"
-      aria-label="Continuum Map Navigation"
+      aria-label="MCU Experience navigation"
       aria-modal="true"
     >
-      <div className={styles.backdrop} onClick={onClose} />
+      <button className={styles.backdrop} onClick={onClose} type="button" aria-label="Close site index" />
       
-      <div className={styles.content}>
+      <div className={styles.content} ref={dialogRef} tabIndex={-1}>
         <div className={styles.routeList}>
-          <h2 className="meta text-graphite-500" style={{ marginBottom: "var(--space-8)" }}>INDEX</h2>
-          <nav aria-label="Continuum Map Routes">
+          <p className={styles.eyebrow}>ONE UNIVERSE · MANY WAYS IN</p>
+          <nav aria-label="MCU Experience routes">
             <ul className={styles.routeGroup}>
               {ROUTES.map((route) => (
                 <li key={route.href}>
@@ -88,20 +107,22 @@ export function ContinuumMap({
             </ul>
           </nav>
           
-          <div style={{ marginTop: "var(--space-10)" }}>
-            <div style={{ display: "flex", gap: "var(--space-6)", marginBottom: "var(--space-6)" }}>
-              <SpoilerControl />
+          <div className={styles.controls}>
+            <div className={styles.controlRow}>
               <SoundControl />
             </div>
-            <p className="meta text-graphite-500" style={{ maxWidth: "400px" }}>
+            <p className={styles.disclaimer}>
               This site is not affiliated with Marvel Studios. 
-              Data is for educational and chronological analysis.
+              Full-story notes are editorial reading aids for released films.
             </p>
           </div>
         </div>
 
         <div className={styles.previewField}>
-          {/* Future: Dynamic preview of selected route */}
+          <span className={styles.previewSeam} aria-hidden="true" />
+          <p className={styles.previewKicker}>EVERY LIFE</p>
+          <p className={styles.previewTitle}>LEAVES<br />A TRACE.</p>
+          <p className={styles.previewCopy}>Choose a route; the same continuity takes a different form.</p>
         </div>
       </div>
     </div>

@@ -1,43 +1,25 @@
 import { films } from "@/content/films";
-import Link from "next/link";
-import { Metadata } from "next";
+import { FilmIndex } from "@/components/films/FilmIndex";
+import type { Metadata } from "next";
+import styles from "./Films.module.css";
 
 export const metadata: Metadata = {
-  title: "Films | The MCU Continuum",
-  description: "The complete cinematic record of the Marvel Cinematic Universe.",
+  title: "Films",
+  description: "A full-story archive of MCU feature films, their consequences, and the memories they left behind.",
 };
 
 export default function FilmsPage() {
-  // Sort by release order
-  const releasedFilms = films.filter(f => f.releaseOrder !== null)
-    .sort((a, b) => (a.releaseOrder || 0) - (b.releaseOrder || 0));
+  const catalog = [...films].sort((a, b) => a.releaseOrder - b.releaseOrder);
 
   return (
-    <main className="route-container page-gutter">
-      <header className="continuum-section">
-        <h1 className="text-6xl uppercase tracking-tight">The Cinematic Record</h1>
-        <p className="text-xl ink-secondary mt-4 max-w-2xl">
-          The definitive index of universal events, mapped chronologically by observation date.
-        </p>
+    <main className={styles.page}>
+      <header className={styles.hero}>
+        <p>EVENT INDEX</p>
+        <h1>THE STORY<br />IS ALL<br />HERE.</h1>
+        <span aria-hidden="true" />
+        <p>Every released film is open for a full-story reading: the turning point, the consequence, and the moment fans still carry with them.</p>
       </header>
-
-      <section className="continuum-section">
-        <div className="films-grid">
-          {releasedFilms.map((film) => (
-            <article key={film.id} className="film-card">
-              <span className="mono text-xs ink-muted mb-2 block">
-                PHASE {film.phase} // RELEASE {String(film.releaseOrder).padStart(2, '0')}
-              </span>
-              <h2 className="text-2xl mb-3">{film.title}</h2>
-              <p className="text-base ink-secondary mb-6">{film.spoilerSafePremise}</p>
-              
-              <Link href={`/films/${film.id}`} className="semantic-link uppercase text-sm tracking-wide">
-                Examine Record <span className="arrow">→</span>
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
+      <FilmIndex films={catalog} />
     </main>
   );
 }

@@ -10,7 +10,6 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 import { engine } from "@/engine/ExperienceEngine";
-import { SCENES } from "@/config/scenes";
 
 export function NarrativeLighting() {
   const lightRef = useRef<THREE.PointLight>(null);

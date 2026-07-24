@@ -1,0 +1,19 @@
+.page { min-height: 100vh; padding-top: 104px; background: var(--optical-white); color: var(--ink-on-light); }
+.hero, .method, .sources { padding-inline: var(--page-gutter); }
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .7fr); gap: var(--space-9); padding-top: clamp(72px, 10vw, 144px); padding-bottom: clamp(72px, 10vw, 136px); }
+.hero p:first-child, .method p:first-child, .sources > p { color: var(--ink-muted-on-light); font-size: var(--meta); font-weight: 600; letter-spacing: .1em; }
+.hero h1 { margin: var(--space-5) 0 0; font-size: clamp(4rem, 8.8vw, 8rem); font-variation-settings: "wdth" 78; line-height: .82; }
+.hero > p:last-child { align-self: end; max-width: 40ch; color: var(--ink-muted-on-light); font-size: var(--body-lg); line-height: 1.55; }
+.method { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, .9fr); gap: var(--space-10); padding-block: clamp(88px, 11vw, 152px); border-top: 1px solid var(--seam-light); background: #e8e7e2; }
+.method h2 { max-width: 8ch; font-size: clamp(3rem, 5vw, 5.8rem); line-height: .86; }
+.method div p:not(:first-child) { max-width: 56ch; margin-top: var(--space-5); color: var(--ink-muted-on-light); font-size: var(--body-lg); line-height: 1.58; }
+.sources { padding-block: clamp(88px, 11vw, 152px); }
+.sources h2 { margin: var(--space-4) 0 var(--space-7); font-size: clamp(2.75rem, 4.8vw, 5.3rem); line-height: .87; }
+.sources ol { border-top: 1px solid var(--seam-light); }
+.sources li { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: var(--space-4); align-items: start; padding: var(--space-5) 0; border-bottom: 1px solid var(--seam-light); }
+.sources li > span { padding-top: 4px; color: var(--ink-muted-on-light); font: 500 var(--meta)/1 var(--font-mono); }
+.sources h3 { font-size: var(--title-lg); line-height: .95; }
+.sources li p { margin-top: var(--space-2); color: var(--ink-muted-on-light); font-size: .9rem; }
+.sources a { min-height: 44px; color: var(--ink-on-light); font: 600 var(--meta)/44px var(--font-ui); letter-spacing: .07em; text-decoration: underline; text-underline-offset: 4px; }
+.sources a:hover { color: var(--causal-red); }
+@media (max-width: 767px) { .hero, .method { display: block; } .hero > p:last-child { margin-top: var(--space-7); } .method div { margin-top: var(--space-7); } .sources li { grid-template-columns: 32px minmax(0, 1fr); } .sources a { grid-column: 2; } }

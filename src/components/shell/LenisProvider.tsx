@@ -21,7 +21,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
 
     engine.setLenis(lenis);
 
-    lenis.on("scroll", (e: any) => {
+    lenis.on("scroll", (e) => {
       engine.setScrollTarget(e.progress);
     });
 

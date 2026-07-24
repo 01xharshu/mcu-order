@@ -7,22 +7,11 @@
  * No OrbitControls.
  */
 
-import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
 import { engine } from "@/engine/ExperienceEngine";
 
 export function CameraRig() {
-  const { camera, size } = useThree();
-
-  useEffect(() => {
-    // Set FOV based on aspect ratio (mobile vs desktop)
-    const isMobile = size.width < 768;
-    // @ts-ignore
-    camera.fov = isMobile ? 42 : 34;
-    camera.updateProjectionMatrix();
-  }, [size, camera]);
-
-  useFrame((state, delta) => {
+  useFrame((state) => {
     // The engine ticks from the layout's RAF, but we can also tick it here if we want R3F to drive it.
     // For now, engine is ticked by LenisProvider.
     // Read from the engine for any parallax or camera movement.

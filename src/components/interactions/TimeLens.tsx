@@ -7,6 +7,7 @@ export function TimeLens({ children }: { children: React.ReactNode }) {
   const [active, setActive] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [scale, setScale] = useState(1);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,6 +37,16 @@ export function TimeLens({ children }: { children: React.ReactNode }) {
       window.removeEventListener("wheel", handleWheel);
     };
   }, [active]);
+
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+    const update = () => setDimensions({ width: element.clientWidth, height: element.clientHeight });
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div 
@@ -79,8 +90,8 @@ export function TimeLens({ children }: { children: React.ReactNode }) {
             style={{
               left: -(pos.x - (125 * scale)),
               top: -(pos.y - (125 * scale)),
-              width: containerRef.current?.clientWidth || 0,
-              height: containerRef.current?.clientHeight || 0,
+              width: dimensions.width,
+              height: dimensions.height,
             }}
           >
             {/* The revealed content: We render children again but with a data-attribute to apply detailed styles via CSS */}
