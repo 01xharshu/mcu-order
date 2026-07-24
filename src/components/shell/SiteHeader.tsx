@@ -41,6 +41,15 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
+  useEffect(() => {
+    if (mapOpen) {
+      document.body.classList.add("map-open");
+    } else {
+      document.body.classList.remove("map-open");
+    }
+    return () => document.body.classList.remove("map-open");
+  }, [mapOpen]);
+
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
@@ -79,7 +88,7 @@ export function SiteHeader() {
           type="button"
           onClick={() => setMapOpen(!mapOpen)}
         >
-          INDEX
+          {mapOpen ? "CLOSE" : "INDEX"}
         </button>
       </div>
 

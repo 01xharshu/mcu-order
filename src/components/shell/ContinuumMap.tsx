@@ -104,14 +104,6 @@ export function ContinuumMap({
           {/* Future: Dynamic preview of selected route */}
         </div>
       </div>
-      
-      <button 
-        className={styles.closeButton} 
-        onClick={onClose}
-        aria-label="Close Continuum Map"
-      >
-        CLOSE
-      </button>
     </div>
   );
 }

@@ -281,14 +281,17 @@ Primary audiences:
 
 This is an independent fan-made guide.
 
-Do not use actor likenesses, official posters, movie stills, footage, dialogue, score, logos, copied costumes, or proprietary 3D props unless the user supplies documented authorization.
+Do not use actor likenesses, dialogue, score, copied costumes.
 
 Default assets:
 
 - original symbolic character interpretations;
+- official posters;
+- logos, 3D props;
 - silhouettes or back/three-quarter views;
 - original cinematic environments;
 - original materials and artifacts;
+- Movies footages and still if available online.
 - original summaries and diagrams;
 - neutral text treatment of film and character names.
 
@@ -4146,15 +4149,15 @@ Motion may animate:
 - filter rearrangement;
 - focused list item;
 - modal/dialog;
-- discrete button feedback.
+- discrete button feedback;
+- scene progress;
+- scroll position.
 
 Motion may not animate:
 
 - camera;
 - WebGL materials;
-- scene progress;
-- continuity topology or Causal Shear;
-- scroll position.
+- continuity topology or Causal Shear.
 
 ---
 
@@ -4177,7 +4180,7 @@ type ProductStore = {
 
 Rules:
 
-- Persist only watched IDs, spoiler mode, sound preference, quality override, and saved watch path.
+- Persist only watched IDs, sound preference, quality override, and saved watch path.
 - Provide a visible clear-data action.
 - Do not persist pointer, scroll progress, camera, hover, or temporary filters.
 - Do not update Zustand every frame.
@@ -5873,7 +5876,6 @@ Deliver:
 28. Character identity sheets.
 29. Character completeness report.
 30. Claim-source coverage report.
-31. Spoiler audit.
 32. Rights inventory.
 33. Desktop/mobile contact sheets.
 34. Motion recordings.

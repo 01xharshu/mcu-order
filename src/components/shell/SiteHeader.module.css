@@ -29,6 +29,12 @@
   max-width: var(--max-content-width);
   margin: 0 auto;
   height: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gap);
+  padding-inline: var(--page-gutter);
+  align-items: start;
+  padding-top: 30px;
 }
 
 .header.scrolled {
@@ -44,9 +50,7 @@
 
 /* ── Brand ── */
 .brand {
-  position: absolute;
-  left: var(--page-gutter); /* 48px on standard desktop */
-  top: 30px;
+  grid-column: 1 / span 8;
   font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 560;
@@ -61,11 +65,9 @@
 
 /* ── Navigation ── */
 .nav {
+  grid-column: 15 / span 8; 
   display: flex;
-  position: absolute;
-  top: 30px;
-  left: 1000px; /* Precise spec from prompt for 1440px desktop */
-  align-items: center;
+  align-items: flex-start;
   gap: 32px;
   pointer-events: auto;
 }
@@ -100,9 +102,8 @@
 
 /* ── Index / Continuum Map Toggle ── */
 .indexButton {
-  position: absolute;
-  top: 30px;
-  right: var(--page-gutter); /* Exact right edge alignment, ~1330 at 1440 */
+  grid-column: -3 / -1;
+  justify-self: end;
   font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 500;
@@ -115,34 +116,54 @@
   line-height: 1;
   transition: opacity var(--trans-acknowledge);
   pointer-events: auto;
+  z-index: 200;
+  /* Reset global button styles for header link */
+  min-height: auto;
+  min-width: auto;
+  padding: 0;
 }
 
 .indexButton:hover {
   opacity: 0.7;
+  border-color: transparent;
 }
 
 /* ── Tablet & Small Desktop (graceful degradation from 1440 lock) ── */
 @media (max-width: 1439px) {
   .nav {
-    left: auto;
-    right: 120px;
+    grid-column: 13 / span 10;
     gap: 24px;
+  }
+}
+
+@media (max-width: 1179px) {
+  .brand {
+    grid-column: 1 / span 5;
+  }
+  .nav {
+    grid-column: 6 / span 6;
+    gap: 16px;
+  }
+  .indexButton {
+    grid-column: -2 / -1;
   }
 }
 
 /* ── Mobile ── */
 @media (max-width: 767px) {
+  .headerInner {
+    padding-top: calc(env(safe-area-inset-top) + 18px);
+  }
+  
   .nav {
     display: none; /* Routes accessible via Continuum Map on mobile */
   }
   
   .brand {
-    left: var(--page-gutter); /* 20px */
-    top: calc(env(safe-area-inset-top) + 18px);
+    grid-column: 1 / span 4;
   }
 
   .indexButton {
-    right: var(--page-gutter); /* 20px */
-    top: calc(env(safe-area-inset-top) + 18px);
+    grid-column: -3 / -1;
   }
 }

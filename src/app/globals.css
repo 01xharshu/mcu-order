@@ -19,6 +19,12 @@
 .site-main {
   flex: 1;
   position: relative;
+  transition: opacity 520ms cubic-bezier(0.8, 0, 0.1, 1);
+}
+
+body.map-open .site-main {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ── Page Gutter Utility ── */
@@ -26,6 +32,14 @@
   padding-inline: var(--page-gutter);
   max-width: var(--max-content-width);
   margin-inline: auto;
+  width: 100%;
+}
+
+/* ── Global Grid System (§8) ── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gap);
   width: 100%;
 }
 
@@ -69,6 +83,31 @@
   padding-top: var(--header-safe-height);
   padding-bottom: var(--bottom-safe-area);
   min-height: 100vh;
+}
+
+/* ── Functional Controls (§8) ── */
+/* Calm text-and-rule compositions with 0-3px radius and minimum 44px target */
+button,
+.interactive-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--body-base);
+  border-radius: 2px;
+  border: 1px solid var(--seam-light);
+  background: transparent;
+  color: var(--text-primary);
+  transition: opacity var(--trans-acknowledge), border-color var(--trans-acknowledge);
+  cursor: pointer;
+}
+
+button:hover,
+.interactive-control:hover {
+  border-color: var(--seam-dark);
 }
 
 /* ── Responsive Breakpoints (§20, lines 2202–2208) ── */

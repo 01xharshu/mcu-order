@@ -47,6 +47,9 @@
   --page-gutter-tablet: 32px;
   --page-gutter-mobile: 20px;
   
+  --grid-columns: 24;
+  --grid-gap: 12px;
+  
   --max-content-width: 1680px;
   --header-safe-height: 80px;
   --bottom-safe-area: 74px;
@@ -73,12 +76,15 @@
 @media (max-width: 1179px) {
   :root {
     --page-gutter: var(--page-gutter-tablet);
+    --grid-columns: 12;
   }
 }
 
 @media (max-width: 767px) {
   :root {
     --page-gutter: var(--page-gutter-mobile);
+    --grid-columns: 6;
+    --grid-gap: 8px;
     --header-safe-height: calc(64px + env(safe-area-inset-top));
     --bottom-safe-area: calc(20px + env(safe-area-inset-bottom));
   }
